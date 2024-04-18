@@ -1,0 +1,43 @@
+.input {
+	border: 1px solid #8f8f8f;
+	border-radius: 5px;
+	padding: 10px 15px;
+	height: 46px;
+	outline: 0;
+	transition: 0.3s;
+}
+
+.input:focus {
+	box-shadow: 0px 0px 10px 0px rgba(0 0 0 / 0.13);
+}
+
+.select {
+	height: 46px;
+	margin: 0 !important;
+}
+
+.select > div:nth-child(3) {
+	height: 100%;
+	border: 1px solid #8f8f8f;
+	outline: none;
+	box-shadow: none;
+}
+.select > div:nth-child(3) > div:nth-child(2) > span {
+	background-color: #8f8f8f;
+}
+
+.text-area {
+	min-height: 100px;
+}
+
+.input__button {
+	height: 46px !important;
+	width: 46px !important;
+}
+
+.checkbox {
+	width: fit-content !important;
+}
+.checkbox div {
+	width: fit-content !important;
+}

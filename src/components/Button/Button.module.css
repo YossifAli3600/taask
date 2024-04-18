@@ -1,0 +1,62 @@
+.button{
+  border: 0;
+  padding: 10px 30px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  transition: .3s;
+  white-space: nowrap;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.button a{
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+}
+
+.button__secondary{
+  border: 1px solid var(--primary);
+}
+
+.button__dark,
+.button__dark a{
+  background-color: black;
+  color: white;
+}
+
+.button__secondary,
+.button__secondary a{
+  background-color: white;
+  color: black;
+}
+.button__green,
+.button__green a{
+  background-color: green;
+  color: black;
+}
+.button__red,
+.button__red a{
+  background-color: red;
+  color: white;
+}
+
+.button__secondary__dark
+.button__secondary__dark a{
+  background-color: white !important;
+  border-color: black;
+  color: black;
+}
+
+.button__small{
+  width: 35px;
+  height: 35px;
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
