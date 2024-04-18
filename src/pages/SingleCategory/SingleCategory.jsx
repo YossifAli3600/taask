@@ -10,23 +10,19 @@ import { useStore } from '../../zustand/store';
 
 export const SingleCategory = () => {
     let { categoryId } = useParams();
-    const { handleSearch, handleGetCategories } = useSearchMutations(["category", categoryId]);
+    const { handleGetCategories } = useSearchMutations("category", categoryId);
     const [LawyersData, setLawyersData] = useState([])
-    const searchData = useStore((state) => state.SearchData)
-    const CategoryData = useStore((state) => state.CategoryData)
+    const CategoryData = useStore((state) => state.CategoryData[categoryId])
 
     useEffect(() => {
-        if (!searchData) {
-            handleSearch.mutate({ category_id: categoryId });
+        if(!CategoryData){
+            handleGetCategories.mutate({ category_id: categoryId });
         }
-        setLawyersData(searchData)
-    }, [searchData])
-
-    useEffect(() => {
-        console.log(categoryId)
-        handleGetCategories.mutate({ category_id: categoryId });
-        setLawyersData(CategoryData)
     }, [categoryId])
+    
+    useEffect(()=>{
+        setLawyersData(CategoryData)
+    },[CategoryData]);
 
     let content;
 
@@ -36,7 +32,6 @@ export const SingleCategory = () => {
         content = (
             <div className='grid grid-cols-1 md:grid-cols-3 gap-8 dark:text-white'>
                 {LawyersData?.lawyers?.map((lawyer) => {
-                    console.log(lawyer)
                     return (
                         <LawyerCard key={lawyer?.id} lawyer={lawyer} />
                     )

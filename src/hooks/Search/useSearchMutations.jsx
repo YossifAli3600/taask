@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useStore } from "../../zustand/store";
 
 export default function useSearchMutations(text, id) {
+    
     const { searchApi } = useSearchApi(text);
     const { formErr, handleMutationErr } = useFormErr();
     const editSearchData = useStore((state) => state.setSearchData);
@@ -25,7 +26,7 @@ export default function useSearchMutations(text, id) {
         toast.success("تم البحث بنجاح");
     }
     function categorySuccessHandler(data) {
-        editCategoryData(data.data.data)
+        editCategoryData(id,data.data.data)
         toast.success("تم البحث بنجاح");
     }
 

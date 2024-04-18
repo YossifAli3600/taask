@@ -6,7 +6,7 @@ document.documentElement.dir = lang;
 const store = (set) => ({
 	lang: lang,
 	SearchData: null,
-	CategoryData: null,
+	CategoryData: {},
 	filters: {},
 	editFilters: (filterName, value) => {
 		set((store) => ({
@@ -23,8 +23,10 @@ const store = (set) => ({
 	setSearchData: (data) => {
 		set(() => ({ SearchData: data }));
 	},
-	setCategoryData: (data) => {
-		set(() => ({ SearchData: data }));
+	setCategoryData: (id, value) => {
+		set((store) => ({
+			CategoryData: { ...store.CategoryData, [id]: value },
+		}));
 	},
 });
 
