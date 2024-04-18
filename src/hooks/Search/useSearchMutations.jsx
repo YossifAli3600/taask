@@ -7,10 +7,16 @@ import { useStore } from "../../zustand/store";
 export default function useSearchMutations(text, id) {
     const { searchApi } = useSearchApi(text);
     const { formErr, handleMutationErr } = useFormErr();
-    const queryClient = useQueryClient();
     const editSearchData = useStore((state) => state.setSearchData);
+    const editCategoryData = useStore((state) => state.setCategoryData);
+
     const handleSearch = useMutation(searchApi, {
         onSuccess: searchSuccessHandler,
+        onError: handleMutationErr,
+    });
+
+    const handleGetCategories = useMutation(searchApi, {
+        onSuccess: categorySuccessHandler,
         onError: handleMutationErr,
     });
 
@@ -18,6 +24,10 @@ export default function useSearchMutations(text, id) {
         editSearchData(data.data.data)
         toast.success("تم البحث بنجاح");
     }
+    function categorySuccessHandler(data) {
+        editCategoryData(data.data.data)
+        toast.success("تم البحث بنجاح");
+    }
 
-    return { handleSearch, formErr };
+    return { handleSearch, handleGetCategories, formErr };
 }

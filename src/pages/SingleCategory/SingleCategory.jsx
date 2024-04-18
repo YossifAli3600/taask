@@ -10,16 +10,24 @@ import { useStore } from '../../zustand/store';
 
 export const SingleCategory = () => {
     let { categoryId } = useParams();
-    const { handleSearch } = useSearchMutations(["category", categoryId]);
+    const { handleSearch, handleGetCategories } = useSearchMutations(["category", categoryId]);
     const [LawyersData, setLawyersData] = useState([])
     const searchData = useStore((state) => state.SearchData)
+    const CategoryData = useStore((state) => state.CategoryData)
 
     useEffect(() => {
         if (!searchData) {
             handleSearch.mutate({ category_id: categoryId });
         }
         setLawyersData(searchData)
-    }, [searchData, categoryId])
+    }, [searchData])
+
+    useEffect(() => {
+        console.log(categoryId)
+        handleGetCategories.mutate({ category_id: categoryId });
+        setLawyersData(CategoryData)
+    }, [categoryId])
+
     let content;
 
     if (!LawyersData?.lawyers || !LawyersData?.lawyers?.length) {
