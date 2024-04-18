@@ -2,7 +2,7 @@ import React from 'react'
 
 export const TimesTab = () => {
   return (
-    <div className='grid grid-cols-3 md:grid-cols-1 gap-2'>
+    <div className='grid grid-cols-1 md:grid-cols-3 gap-2'>
       <div className=' rounded-lg  overflow-hidden'>
         <div className='h-[50px] bg-[#DDB762] text-center' >اليوم</div>
         <div className='bg-[#F9F9F9] h-full dark:bg-slate-400 text-black dark:text-white flex items-center justify-center'>
